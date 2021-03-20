@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_margin_normal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view_status_footer_title_textview"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:clickable="false"
+        android:drawablePadding="@dimen/padding_margin_normal"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view_status_footer_desc_textview"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_margin_normal"
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:clickable="false"
+        android:drawablePadding="@dimen/padding_margin_normal"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/color_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/view_status_footer_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_margin_normal"
+        android:layout_marginBottom="@dimen/padding_margin_normal"
+        android:layout_marginRight="@dimen/padding_margin_normal"
+        android:layout_marginLeft="@dimen/padding_margin_normal"
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:visibility="visible" />
+
+
+</LinearLayout>

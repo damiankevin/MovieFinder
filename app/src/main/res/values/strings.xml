@@ -10,4 +10,15 @@
     <string name="now_playing">Now Playing</string>
     <string name="upcoming">Upcoming</string>
 
+    <string name="DESC_STATUS_NETWORK">Connection Error</string>
+    <string name="DESC_STATUS_EMPTY">Data Empty</string>
+    <string name="SIGN_LOADING">Loading</string>
+    <string name="DESC_STATUS_DATA_COMPLETE">Data Complete</string>
+    <string name="SIGN_ERROR_NETWORK">Failed to get data</string>
+    <string name="SIGN_ERROR_NO_DATA">Data is empty</string>
+    <string name="SIGN_DATA_COMPLETE">All Data have been displayed</string>
+    <string name="SIGN_SAVED_CONTENT">Success put favourite</string>
+    <string name="SIGN_UNSAVED_CONTENT">Item removed from favourite</string>
+    <string name="favourite">Favourite</string>
+
 </resources>

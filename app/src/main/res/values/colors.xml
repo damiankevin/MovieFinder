@@ -21,6 +21,8 @@
     <color name="color_transparent">#00000000</color>
     <color name="color_black">#000000</color>
 
+    <color name="color_background_image">#F2F2F2</color>
+
     <color name="color_text">#8A000000</color>
     <color name="color_text_secondary">#787878</color>
     <color name="color_devider">#14000000</color>

@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import id.com.android.moviedb.controller.ControllerPreference
 import id.com.android.moviedb.injector.scope.PerApplication
+import id.com.android.moviedb.repository.RepositoryContent
 import id.com.android.moviedb.repository.RepositorySettings
 
 @Module
@@ -21,6 +22,12 @@ class ModulePersistance {
     @PerApplication
     internal fun providePreferenceSettings(controllerPreference: ControllerPreference): RepositorySettings {
         return RepositorySettings(controllerPreference)
+    }
+
+    @Provides
+    @PerApplication
+    internal fun providePersistanceContent(application: Application): RepositoryContent {
+        return RepositoryContent.newInstance(application)
     }
 
 
