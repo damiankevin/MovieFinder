@@ -24,7 +24,7 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?android:attr/actionBarSize"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/colorAccent"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
 
 
@@ -33,12 +33,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="?android:attr/actionBarSize">
 
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_movie" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/view_main_header_text"
+                        style="@style/Base.TextAppearance.AppCompat.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/padding_margin_normal_thin"
+                        android:fontFamily="@font/gotham_bold"
+                        android:gravity="center_vertical"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/medium_font_size" />
 
                 </RelativeLayout>
             </RelativeLayout>

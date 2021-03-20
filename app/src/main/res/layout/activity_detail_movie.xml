@@ -1,0 +1,448 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_collection_parent_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:ignore="UnusedAttribute">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_detail"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/colorAccent"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+            </androidx.appcompat.widget.Toolbar>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize">
+
+                <TextView
+                    android:textSize="@dimen/normal_medium_font_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_bold"
+                    android:textColor="@color/colorWhite"/>
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:paddingRight="@dimen/padding_margin_normal"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/view_detail_favourite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@color/color_transparent"
+                    app:srcCompat="@drawable/ic_heart" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_margin="@dimen/padding_margin_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/view_movie_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@color/color_background_image"></androidx.appcompat.widget.AppCompatImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:padding="@dimen/padding_margin_normal_thin"
+                    android:layout_marginLeft="@dimen/padding_margin_normal_thin"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/view_detail_title"
+                            style="@style/Base.TextAppearance.AppCompat.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/padding_margin_normal_thin"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/gotham_bold"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/color_black"
+                            android:textSize="@dimen/medium_font_size" />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/padding_margin_normal"
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+                                <LinearLayout
+                                    android:layout_weight="0.6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:text="@string/genre"
+                                        android:textColor="@color/color_text_secondary"
+                                        android:textSize="@dimen/small_font_size" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="0.3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/view_detail_genre"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/padding_margin_normal_thin"
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+                                <LinearLayout
+                                    android:layout_weight="0.6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:text="@string/duration"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text_secondary" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="0.3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/view_detail_duration"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/padding_margin_normal_thin"
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+                                <LinearLayout
+                                    android:layout_weight="0.6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:text="@string/production"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text_secondary" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="0.3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/view_detail_production"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/padding_margin_normal_thin"
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+                                <LinearLayout
+                                    android:layout_weight="0.6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:text="@string/ratingage"
+                                        android:textColor="@color/color_text_secondary"
+                                        android:textSize="@dimen/small_font_size" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="0.3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/view_detail_rating_age"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/padding_margin_normal_thin"
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+                                <LinearLayout
+                                    android:layout_weight="0.6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:text="@string/rating"
+                                        android:textColor="@color/color_text_secondary"
+                                        android:textSize="@dimen/small_font_size" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="0.3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/view_detail_rating"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/padding_margin_normal_thin"
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+                                <LinearLayout
+                                    android:layout_weight="0.6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:text="@string/budget"
+                                        android:textColor="@color/color_text_secondary"
+                                        android:textSize="@dimen/small_font_size" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="0.3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/view_detail_budget"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/padding_margin_normal_thin"
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+                                <LinearLayout
+                                    android:layout_weight="0.6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:text="@string/releasedate"
+                                        android:textColor="@color/color_text_secondary"
+                                        android:textSize="@dimen/small_font_size" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="0.3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/view_detail_release_date"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/gotham_book"
+                                        android:textSize="@dimen/small_font_size"
+                                        android:textColor="@color/color_text" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Base.TextAppearance.AppCompat.Caption"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_margin_normal"
+            android:layout_marginRight="@dimen/padding_margin_normal_thin"
+            android:ellipsize="end"
+            android:fontFamily="@font/gotham_bold"
+            android:gravity="center_vertical"
+            android:text="@string/overview"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/normal_font_size" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="@dimen/padding_margin_normal_thin"
+            android:id="@+id/view_detail_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/gotham_book"
+            android:textSize="@dimen/small_font_size"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/color_text_secondary" />
+
+        <RelativeLayout
+            android:id="@+id/view_detail_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_margin_normal_thin"
+            android:background="@drawable/background_rounded_green">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_margin="@dimen/padding_margin_normal"
+                android:textSize="@dimen/normal_font_size"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/openurl"
+                android:textColor="@color/colorWhite"
+
+                app:fontFamily="@font/gotham_bold" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

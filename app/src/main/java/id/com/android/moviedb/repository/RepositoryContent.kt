@@ -4,9 +4,8 @@ import android.app.Application
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.room.migration.Migration
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import id.com.android.moviedb.model.ModelItemMovie
+import id.com.android.moviedb.model.ModelMovieDetail
 import id.com.android.moviedb.tools.UtilConstant
 
 
@@ -30,6 +29,9 @@ abstract class RepositoryContent : RoomDatabase() {
 
         @Query("SELECT id FROM content where hasFavourite LIKE :favourite")
         fun allContentIdFavourite(favourite: Boolean?): List<Int>
+
+        @Query("SELECT * FROM content where id LIKE :id")
+        fun getContentById(id: Int?): List<ModelItemMovie>
     }
 
 
@@ -39,6 +41,21 @@ abstract class RepositoryContent : RoomDatabase() {
             val contentDetail = content
             contentDetail.hasFavourite = true
             return contentDetail
+        }
+    }
+
+    class ContentDetailConverterFavourite(var content: ModelMovieDetail?, var idMovie: Int) {
+        fun toContent(): ModelItemMovie? {
+            return ModelItemMovie(false,
+                content?.backdrop_path,
+                idMovie,
+            "",
+                content?.original_title,
+                content?.overview,0.0,
+                content?.poster_path,
+                content?.release_date,
+                content?.original_title,
+                false,0.0,0,true)
         }
     }
 

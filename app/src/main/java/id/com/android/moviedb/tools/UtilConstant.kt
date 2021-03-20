@@ -12,4 +12,6 @@ object UtilConstant {
     const val PARAM_DATABASE = "content_db_ver_1.0.0"
 
     const val BASE_URL_IMAGE_SMALL = "https://image.tmdb.org/t/p/w185"
+
+    const val ID_MOVIE = "ID_MOVIE"
 }

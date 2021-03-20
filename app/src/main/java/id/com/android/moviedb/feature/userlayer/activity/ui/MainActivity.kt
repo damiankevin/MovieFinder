@@ -1,11 +1,13 @@
 package id.com.android.moviedb.feature.userlayer.activity.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.navigation.NavigationView
 import id.com.android.moviedb.R
@@ -24,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_main_content.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
+
 
 class MainActivity : ActivityBase(), NavigationView.OnNavigationItemSelectedListener,
     ViewMain,
@@ -32,12 +34,12 @@ class MainActivity : ActivityBase(), NavigationView.OnNavigationItemSelectedList
     InterfaceContentCollection,
     SwipeRefreshLayout.OnRefreshListener{
 
-    private var pageScreenPool = WeakHashMap<Long, Fragment>()
     @Inject
     lateinit var presenterMain : PresenterMain
     var currentScreen: String = TypeScreen.POPULAR
     private lateinit var controllerScroll: ControllerScroll
     private lateinit var adapterCollectionMovie: AdapterCollectionMovie
+    var pagesMain : Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,7 @@ class MainActivity : ActivityBase(), NavigationView.OnNavigationItemSelectedList
         presenterMain.attachView(this)
         initializeToolbar()
         initializeCollection()
+        view_main_header_text.text =    currentScreen
         presenterMain.viewCreated(currentScreen)
     }
 
@@ -57,9 +60,20 @@ class MainActivity : ActivityBase(), NavigationView.OnNavigationItemSelectedList
 
         adapterCollectionMovie.interfaceContentCollection = this
         view_collection_swiperefreshlayout.setOnRefreshListener(this)
-        view_collection_recyclerview?.addOnScrollListener(controllerScroll)
         view_collection_recyclerview?.layoutManager = layoutManager
         view_collection_recyclerview?.adapter = adapterCollectionMovie
+
+        view_collection_recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if(currentScreen!=TypeScreen.FAVOURITE){
+                        var pages = pagesMain++
+                        presenterMain.pageLoaded(currentScreen, pages)
+                    }
+                }
+            }
+        })
 
     }
 
@@ -111,6 +125,7 @@ class MainActivity : ActivityBase(), NavigationView.OnNavigationItemSelectedList
             }
 
         }
+        view_main_header_text.text =    currentScreen
         drawerLayout!!.closeDrawer(GravityCompat.START)
         return true
     }
@@ -138,15 +153,13 @@ class MainActivity : ActivityBase(), NavigationView.OnNavigationItemSelectedList
 
     override fun showCollectionMovie(collectionMovie: ArrayList<ModelItemMovie>) {
         adapterCollectionMovie.collectionMovie.addAll(collectionMovie)
-        adapterCollectionMovie.notifyItemRangeInserted(adapterCollectionMovie.itemCount, adapterCollectionMovie.collectionMovie.size)
+        adapterCollectionMovie.notifyItemRangeInserted(
+            adapterCollectionMovie.itemCount,
+            adapterCollectionMovie.collectionMovie.size
+        )
     }
 
     override fun onLoadMore(page: Int) {
-        if(currentScreen!=TypeScreen.FAVOURITE){
-            var pages = page
-            presenterMain.pageLoaded(currentScreen,pages)
-        }
-
     }
 
     override fun onContentFavourite(content: ModelItemMovie, position: Int) {
@@ -164,7 +177,9 @@ class MainActivity : ActivityBase(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onContentSelected(content: ModelItemMovie) {
-
+        val intent          = Intent(this, DetailMovieActivity::class.java)
+        intent.putExtra(UtilConstant.ID_MOVIE,content.id)
+        startActivity(intent)
     }
 
     override fun onRefresh() {

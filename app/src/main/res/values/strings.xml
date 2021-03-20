@@ -20,5 +20,14 @@
     <string name="SIGN_SAVED_CONTENT">Success put favourite</string>
     <string name="SIGN_UNSAVED_CONTENT">Item removed from favourite</string>
     <string name="favourite">Favourite</string>
+    <string name="overview">Overview</string>
+    <string name="genre">Genre</string>
+    <string name="duration">Duration</string>
+    <string name="production">Production</string>
+    <string name="ratingage">Rating Age</string>
+    <string name="rating">Rating</string>
+    <string name="budget">Budget</string>
+    <string name="releasedate">Release Date</string>
+    <string name="openurl">Open URL</string>
 
 </resources>

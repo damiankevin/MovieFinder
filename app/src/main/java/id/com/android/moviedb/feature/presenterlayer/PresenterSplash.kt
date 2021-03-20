@@ -13,7 +13,7 @@ class PresenterSplash : PresenterBase<ViewSplash> {
     private var splashHandler: Handler? = null
 
     @Inject
-    constructor(repositorySettings: RepositorySettings) {
+    constructor() {
         splashHandler                       = android.os.Handler()
     }
 

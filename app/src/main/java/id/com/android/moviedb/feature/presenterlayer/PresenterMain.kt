@@ -9,6 +9,9 @@ import id.com.android.moviedb.model.ModelItemMovie
 import id.com.android.moviedb.model.ModelMovie
 import id.com.android.moviedb.repository.RepositoryContent
 import id.com.android.moviedb.tools.UtilConstant
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import retrofit2.Call
@@ -43,7 +46,7 @@ class PresenterMain : PresenterBase<ViewMain> {
 
                 uiThread {
                     setSuccessLoadData()
-                    if(collection?.size==0){
+                    if(collection.size==0){
                         setErrorStatus(TypeStatus.ERROR_DATA_EMPTY)
                     }else{
                         setFromFavourite(arrayCollection)
@@ -51,17 +54,13 @@ class PresenterMain : PresenterBase<ViewMain> {
                 }
             }
         }else{
-            serviceApi.getUpcoming(currentScreen,pagePosition,UtilConstant.API_KEY).enqueue(object :
-                Callback<ModelMovie> {
-                override fun onResponse(call: Call<ModelMovie>, response: Response<ModelMovie>) {
-                    if(response.isSuccessful){
-                        Log.d("sukses","sukses")
-                        checkNotNull(response.body()?.results){
-                            setErrorStatus(TypeStatus.ERROR_DATA_EMPTY)
-                            return
-                        }
+            GlobalScope.launch(Dispatchers.IO){
+                val response = serviceApi.getListMovie(currentScreen,pagePosition,UtilConstant.API_KEY)
+                if(response.isSuccessful){
+                    if(response.body()?.results?.size==0){
+                        setErrorStatus(TypeStatus.ERROR_DATA_EMPTY)
 
-
+                    }else{
                         doAsync {
                             val collectionUrl = repositoryContent?.contentDao()?.allContentIdFavourite(true)
                             uiThread {
@@ -71,20 +70,11 @@ class PresenterMain : PresenterBase<ViewMain> {
                                 setLatestList(response.body(), pagePosition)
                             }
                         }
-
-
-
-                    }else{
-                        Log.d("sukses","tak")
                     }
+                }else{
+                    setErrorStatus(TypeStatus.ERROR_CONNECTION)
                 }
-
-
-                override fun onFailure(call: Call<ModelMovie>, throwable: Throwable) {
-                    Log.d("sukses","gagal")
-
-                }
-            })
+            }
         }
 
     }
