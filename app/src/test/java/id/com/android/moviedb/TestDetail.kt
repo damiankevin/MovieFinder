@@ -43,6 +43,4 @@ class TestDetail {
         Mockito.verify(view)?.showFailedLoadData(TypeStatus.ERROR_DATA_EMPTY)
     }
 
-    
-
 }
